@@ -1,0 +1,199 @@
+{
+    "codigo": 4,
+    "nome": "Scaf",
+    "descricao": "sistema de controle e agendamento financeiro",
+    "listConfiguracoes": [ 
+        {"nome": "pah.arquivos", "valor": "\\mnt\\quaemo\\scaf", "tipo": "SIS" }
+    ],
+    "listPerfis": [
+          {"nome": "Administrador", "chave": "P_SCAF.01"}
+        , {"nome": "Usuário", "chave": "P_SCAF.02"}
+    ],
+    "listRecursos": [
+        {
+            "nome": "Grupos",
+            "url": "/api/grupos",
+            "chave": "R_SCAF.01",
+            "listPermissoes": [{"metodo": "GET", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}]
+        },{
+            "nome": "Categorias",
+            "url": "/api/categorias",
+            "chave": "R_SCAF.02",
+            "listPermissoes": [{"metodo": "GET", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}]
+        
+        },{
+            "nome": "Períodos",
+            "url": "/api/periodos",
+            "chave": "R_SCAF.03",
+            "listPermissoes": [{"metodo": "GET", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}]
+        },{
+            "nome": "Usuários",
+            "url": "/api/usuarios",
+            "chave": "R_SCAF.04",
+            "listPermissoes": [{"metodo": "GET", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}]
+        }
+
+
+        ,{
+            "nome": "Agendamentos",
+            "url": "/api/agendamentos",
+            "chave": "R_SCAF.05",
+            "listPermissoes": [
+                  {"metodo": "GET", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}
+                , {"metodo": "POST", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}
+                , {"metodo": "PUT", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}
+                , {"metodo": "DELETE", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}
+            ]
+        } 
+
+        ,{
+            "nome": "Cartões",
+            "url": "/api/cartoes",
+            "chave": "R_SCAF.06",
+            "listPermissoes": [
+                  {"metodo": "GET", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}
+                , {"metodo": "POST", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}
+                , {"metodo": "PUT", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}
+                , {"metodo": "DELETE", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}
+            ]
+        } 
+
+        ,{
+            "nome": "Lançamentos",
+            "url": "/api/lancamentos",
+            "chave": "R_SCAF.07",
+            "listPermissoes": [
+                  {"metodo": "GET", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}
+                , {"metodo": "POST", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}
+                , {"metodo": "PUT", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}
+                , {"metodo": "DELETE", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}
+            ]
+        } 
+
+        ,{
+            "nome": "Tags",
+            "url": "/api/tags",
+            "chave": "R_SCAF.08",
+            "listPermissoes": [
+                  {"metodo": "GET", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}
+                , {"metodo": "POST", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}
+                , {"metodo": "PUT", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}
+                , {"metodo": "DELETE", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]}
+            ]
+        } 
+
+        ,{
+            "nome": "Contatos",
+            "url": "/api/contatos",
+            "chave": "R_SCAF.09",
+            "listPermissoes": [
+                  {"metodo": "GET", "listPerfis": [{"chave": "P_SCAF.01"}]}
+                , {"metodo": "POST", "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}]} 
+                , {"metodo": "DELETE", "listPerfis": [{"chave": "P_SCAF.01"}]}
+            ]
+        } 
+
+
+    ],
+    "listMenus": [
+        {
+            "chave": "M_SCAF.01",
+            "nome": "Painel Gerencial",
+            "url": "scaf-painel-gerencial",
+            "icone": "desempenho",
+            "ordem": 1,
+            "visivel": true,
+            "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}],
+            "listMenus": []
+        }
+
+        ,{
+            "chave": "M_SCAF.02",
+            "nome": "Pagamentos Agendados",
+            "url": "scaf-agendamentos",
+            "icone": "assignment",
+            "ordem": 2,
+            "visivel": true,
+            "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}],
+            "listMenus": []
+        }
+
+        ,{
+            "chave": "M_SCAF.03",
+            "nome": "Cartões de Crédito",
+            "url": "scaf-cartoes",
+            "icone": "visitas",
+            "ordem": 3,
+            "visivel": true,
+            "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}],
+            "listMenus": []
+        }
+
+        ,{
+            "chave": "M_SCAF.04",
+            "nome": "Lançamentos",
+            "url": "scaf-lancamentos",
+            "icone": "operacoes",
+            "ordem": 4,
+            "visivel": true,
+            "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}],
+            "listMenus": []
+        }
+
+        ,{
+            "chave": "M_SCAF.05",
+            "nome": "Marcadores/Tags",
+            "url": "scaf-tags",
+            "icone": "info",
+            "ordem": 5,
+            "visivel": true,
+            "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}],
+            "listMenus": []
+        }
+
+        ,{
+            "chave": "M_SCAF.06",
+            "nome": "Usuários",
+            "url": "scaf-usuarios",
+            "icone": "user",
+            "ordem": 6,
+            "visivel": true,
+            "listPerfis": [{"chave": "P_SCAF.01"}],
+            "listMenus": []
+        }
+
+        ,{
+            "chave": "M_SCAF.07",
+            "nome": "Contatos",
+            "url": "scaf-contatos",
+            "icone": "mensagem",
+            "ordem": 7,
+            "visivel": true,
+            "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}],
+            "listMenus": []
+        }
+
+        ,{
+            "chave": "M_SCAF.08",
+            "nome": "Relatório",
+            "url": "scaf-relatorios",
+            "icone": "relatorio",
+            "ordem": 8,
+            "visivel": true,
+            "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}],
+            "listMenus": []
+        }
+
+        ,{
+            "chave": "M_SCAF.09",
+            "nome": "Relatório Dinâmico",
+            "url": "scaf-relatorio-dinamico",
+            "icone": "relatorio",
+            "ordem": 9,
+            "visivel": true,
+            "listPerfis": [{"chave": "P_SCAF.01"},{"chave": "P_SCAF.02"}],
+            "listMenus": []
+        } 
+
+    ]
+}

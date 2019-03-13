@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+	    <groupId>br.com.maruno.scaf</groupId>
+	    <artifactId>scaf</artifactId>
+    	<version>1.0.0</version> 
+	</parent>
+ 
+	<artifactId>scaf-ear</artifactId> 
+	<packaging>ear</packaging>
+	<name>SCAF - EAR</name>
+     
+	<profiles>   
+		<profile>
+			<id>deploy</id> 
+			<build>
+				<plugins>
+					<plugin>
+						<inherited>true</inherited>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>package</id>
+								<phase>package</phase>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>${project.groupId}</groupId>
+											<artifactId>${project.artifactId}</artifactId>
+											<version>${project.version}</version>
+											<type>${project.packaging}</type>
+											<destFileName>${project.artifactId}.ear</destFileName> 
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${deployments_wildfly.dir}</outputDirectory>
+									<overWriteReleases>false</overWriteReleases>
+									<overWriteSnapshots>true</overWriteSnapshots>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles> 
+
+	<build> 
+		<plugins>
+			<plugin> 
+				<artifactId>maven-ear-plugin</artifactId> 
+				<configuration>   
+					<manifest>
+						<addClasspath>true</addClasspath>
+					</manifest>
+					<defaultLibBundleDir>lib</defaultLibBundleDir> 
+					<modules>   
+						<webModule>
+							<bundleFileName>scaf-rest.war</bundleFileName>
+							<groupId>br.com.maruno.scaf</groupId>
+							<artifactId>scaf-rest</artifactId>
+							<contextRoot>/scaf-rest</contextRoot> 
+							<unpack>false</unpack>
+						</webModule>     
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+ 
+	<dependencies> 
+		<dependency>
+			<groupId>br.com.maruno.scaf</groupId>
+			<artifactId>scaf-rest</artifactId>
+			<version>${project.version}</version> 
+			<type>war</type>
+		</dependency>   
+	</dependencies>
+
+</project>
